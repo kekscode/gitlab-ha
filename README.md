@@ -8,7 +8,7 @@
 
 # System design
 
-<img src='https://g.gravizo.com/svg?
+![system design](<img src='https://g.gravizo.com/svg?
 @startuml;
 
 actor User;
@@ -35,4 +35,4 @@ A --> User: Done;
 deactivate A;
 
 @enduml
-'>
+'>)
