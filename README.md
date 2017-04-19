@@ -1,6 +1,28 @@
 # Howto HA with Gitlab
 
-# Gitlab components and criticality
+This architecture is based on the monolithic images of GitLab which provides
+all the processes inside a single container.
+
+**Note:** This is usually an anti-pattern in docker world.
+
+# Components and criticality
+
+* A Docker installation on the host where the container runs
+* GitLab application dependencies
+  * gitaly*
+  * gitlab-monitor*
+  * gitlab-workhorse*
+  * logrotate*
+  * nginx*
+  * node-exporter*
+  * postgres-exporter*
+  * postgresql*
+  * prometheus*
+  * redis*
+  * redis-exporter*
+  * sidekiq*
+  * sshd*
+  * unicorn*
 
 # Strategy
 
@@ -8,31 +30,4 @@
 
 # System design
 
-![system design](<img src='https://g.gravizo.com/svg?
-@startuml;
-
-actor User;
-participant "First Class" as A;
-participant "Second Class" as B;
-participant "Last Class" as C;
-
-User -> A: DoWork;
-activate A;
-
-A -> B: Create Request;
-activate B;
-
-B -> C: DoWork;
-activate C;
-
-C --> B: WorkDone;
-destroy C;
-
-B --> A: Request Created;
-deactivate B;
-
-A --> User: Done;
-deactivate A;
-
-@enduml
-'>)
+[1]: https://docs.gitlab.com/omnibus/docker/#gitlab-docker-images
